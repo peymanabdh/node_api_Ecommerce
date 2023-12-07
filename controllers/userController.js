@@ -28,13 +28,13 @@ export const loginUserCtrl = async (req, res) => {
   const findUser = await User.findOne({ email });
   if (findUser && (await bcr.compare(password, findUser?.password))) {
     res.json({
-      status: success,
+      status: "success",
       msg: "login successfully",
-      userLogin,
+      findUser,
     });
   } else {
     res.json({
-      msg: "loged in",
+      msg: "invalid loged in",
     });
   }
 };
