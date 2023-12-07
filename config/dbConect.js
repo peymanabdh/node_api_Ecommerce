@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 //mongodb://localhost:27017/Ecommerce-api
 const dbConect = async () => {
   try {
-    mongoose.set("strictQuery");
+    mongoose.set("strictQuery", true);
     const connected = await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: "true",
-      useUnifiedTopology: "true",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
     console.log(`mongodb conected ${connected.Connection.host}`);
   } catch (error) {
