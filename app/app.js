@@ -1,6 +1,7 @@
 import express from "express";
 import dbConect from "../config/dbConect.js";
 import userRoutes from "../routes/userRoute.js";
+import { globalErrorHandler,notFound } from "../middlewares/globalErroHandler.js";
 dbConect();
 const app = express();
 
@@ -9,4 +10,8 @@ app.use(express.json());
 //routes
 app.use("/", userRoutes);
 
+
+//error handler middleware
+app.use(notFound);
+app.use(globalErrorHandler);
 export default app;
