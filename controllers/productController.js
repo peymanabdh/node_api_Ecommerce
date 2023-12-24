@@ -142,7 +142,7 @@ export const getProducts = expressAsyncHandler(async (req, res) => {
   }
 
   //await the query
-  const products = await productQuery;
+  const products = await productQuery.populate("reviews");
   res.json({
     status: "success",
     total,
@@ -153,7 +153,7 @@ export const getProducts = expressAsyncHandler(async (req, res) => {
   });
 });
 export const getProduct = expressAsyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.params.id).populate("reviews");
   //console.log(product);
   if (!product) {
     console.log("not");

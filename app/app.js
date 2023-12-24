@@ -9,6 +9,7 @@ import productRouter from "../routes/productRoute.js";
 import categoriesRouter from "../routes/categoriesRoute.js";
 import brandsRouter from "../routes/brandRoute.js";
 import colorRouter from "../routes/colorRoute.js";
+import reviewRouter from "../routes/reviewRoute.js";
 
 dbConect();
 const app = express();
@@ -21,6 +22,8 @@ app.use("/api/v1/products", productRouter);
 app.use("/api/v1/categories", categoriesRouter);
 app.use("/api/v1/brands/", brandsRouter);
 app.use("/api/v1/colors/", colorRouter);
+app.use("/api/v1/reviews/", reviewRouter);
+
 //error handler middleware
 app.use(notFound);
 app.use(globalErrorHandler);
